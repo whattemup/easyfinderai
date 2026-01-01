@@ -66,9 +66,7 @@ const handleFileSelect = (e) => { if (e.target.files && e.target.files[0]) { set
 
 const handleUpload = () => { if (selectedFile) { onUpload(selectedFile); setSelectedFile(null); } }; 
 
-return (  
-
-<Button className="btn-lift" data-testid="upload-csv-btn"> <Upload className="mr-2 h-4 w-4" /> Upload CSV <DialogContent className="sm:max-w-md bg-card border-white/10"> Upload Leads CSV <div className={relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${ dragActive ? \"border-primary bg-primary/5\" : \"border-white/10 hover:border-white/20\" }} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} data-testid="csv-drop-zone" > <input type="file" accept=".csv" onChange={handleFileSelect} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" data-testid="csv-file-input" /> <FileText className="mx-auto h-12 w-12 text-muted-foreground mb-4" /> <p className="text-sm text-muted-foreground mb-1"> Drag and drop your CSV file here, or click to browse  
+return ( <Button className="btn-lift" data-testid="upload-csv-btn"> <Upload className="mr-2 h-4 w-4" /> Upload CSV <DialogContent className=\"sm:max-w-md bg-card border-white/10\"><DialogHeader><DialogTitle> Upload Leads CSV </DialogTitle><DialogDescription>  CSV <div className={relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${ dragActive ? \"border-primary bg-primary/5\" : \"border-white/10 hover:border-white/20\" }} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} data-testid="csv-drop-zone" > <input type="file" accept=".csv" onChange={handleFileSelect} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" data-testid="csv-file-input" /> <FileText className="mx-auto h-12 w-12 text-muted-foreground mb-4" /> <p className="text-sm text-muted-foreground mb-1"> Drag and drop your CSV file here, or click to browse  
 
 <p className="text-xs text-muted-foreground"> Required: name, email, company, company_size, industry, budget  
 
