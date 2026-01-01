@@ -1,7 +1,5 @@
 app = "easyfinder-frontend"
 
-appName = "easyfinderai-main"
-
 [build]
 dockerfile = "frontend/Dockerfile"
 
