@@ -1,8 +1,7 @@
-[build]
-dockerfile = 'frontend/Dockerfile'
-app = 'easyfinder-frontend'
-primary_region = 'sjc'
+app = "easyfinder-frontend"
 
+[build]
+dockerfile = "frontend/Dockerfile"
 
 [[services]]
 internal_port = 8080
