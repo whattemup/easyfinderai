@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge"; 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"; 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"; 
-import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger,} from \"@/components/ui/dialog\";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger,} from \"@/components/ui/dialog\";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"; 
 import { ScrollArea } from "@/components/ui/scroll-area"; 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, } from "@/components/ui/tooltip"; 
