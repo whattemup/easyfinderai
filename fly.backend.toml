@@ -1,5 +1,6 @@
 app = "easyfinder-backend"
-
+primary_region = 'sjc'
+appName = "easyfinderai-main"
 
 [build]
 dockerfile = "backend/Dockerfile"
