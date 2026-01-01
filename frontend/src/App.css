@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
+/* EasyFinder AI Custom Styles */ 
 
+/* Gradient radial utility */ .bg-gradient-radial { background: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-to)); } 
 
-function App() {
-const [leads, setLeads] = useState([]);
+/* Table styles */ .table-dense th, .table-dense td { padding: 0.75rem 1rem; } 
 
+/* Smooth transitions */ .transition-smooth { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); } 
 
-useEffect(() => {
-fetch(process.env.REACT_APP_BACKEND_URL + "/api/leads")
-.then(res => res.json())
-.then(setLeads);
-}, []);
+/* Focus ring override for dark theme */ *:focus-visible { outline: none; box-shadow: 0 0 0 2px hsl(var(--ring)); } 
 
-
-return (
-<div>
-<h1>EasyFinder AI</h1>
-{leads.map((l, i) => (
-<div key={i}>{l.email} – {l.score}</div>
-))}
-</div>
-);
-}
-
-
-export default App;
+/* Dialog overlay */ [data-state="open"] > [data-radix-dialog-overlay] { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(4px); }
