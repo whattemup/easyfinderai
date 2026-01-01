@@ -1,7 +1,7 @@
-app = "easyfinder-frontend"
-
 [build]
-dockerfile = "frontend/Dockerfile"
+dockerfile = 'frontend/Dockerfile'
+app = 'easyfinder-frontend'
+primary_region = 'sjc'
 
 
 [[services]]
