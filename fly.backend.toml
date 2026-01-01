@@ -1,10 +1,7 @@
-app = "easyfinder-backend"
-primary_region = 'sjc'
-appName = "easyfinderai-main"
-
 [build]
 dockerfile = "backend/Dockerfile"
-
+app = "easyfinder-backend"
+primary_region = 'sjc'
 
 [env]
 PORT = "8080"
