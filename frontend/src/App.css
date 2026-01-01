@@ -1,1 +1,26 @@
+import { useEffect, useState } from "react";
 
+
+function App() {
+const [leads, setLeads] = useState([]);
+
+
+useEffect(() => {
+fetch(process.env.REACT_APP_BACKEND_URL + "/api/leads")
+.then(res => res.json())
+.then(setLeads);
+}, []);
+
+
+return (
+<div>
+<h1>EasyFinder AI</h1>
+{leads.map((l, i) => (
+<div key={i}>{l.email} – {l.score}</div>
+))}
+</div>
+);
+}
+
+
+export default App;
