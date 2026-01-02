@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Copy package files 
 
-COPY frontend/package.json .
+COPY package.json yarn.lock .
 
   
 
