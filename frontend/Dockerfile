@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Copy package files 
 
-COPY package.json . 
+COPY package.json yarn.lock .
 
   
 
