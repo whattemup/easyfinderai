@@ -32,30 +32,19 @@ RUN yarn build
 
   
 
-# Production stage with nginx 
+# Production stage
+FROM nginx:alpine
 
-FROM nginx:alpine 
+# REMOVE default nginx config (CRITICAL)
+RUN rm /etc/nginx/conf.d/default.conf
 
-  
+# Copy our custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy custom nginx config 
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf 
-
-  
-
-# Copy built files 
-
-COPY --from=build /app/build /usr/share/nginx/html 
-
-  
-
-# Expose port - fly.io will route to this 
+# Copy built frontend
+COPY --from=build /app/build /usr/share/nginx/html
 
 EXPOSE 8080
 
-  
-
-# Start nginx 
-
+CMD ["nginx", "-g", "daemon off;"]
 CMD [\"nginx\", \"-g\", \"daemon off;\"] 
