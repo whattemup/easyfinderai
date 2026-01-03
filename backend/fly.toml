@@ -1,45 +1,17 @@
-# EasyFinder AI - fly.io Deployment Configuration 
+app = "easyfinder-api"
+primary_region = "iad"
 
-  
+[build]
+  dockerfile = "Dockerfile"
 
-# Backend fly.toml (place in /backend folder) 
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
 
-app = \"easyfinder-api\" 
+  [[services.ports]]
+    port = 80
 
-primary_region = \"iad\" 
-
-  
-
-[build] 
-
-  dockerfile = \"Dockerfile\" 
-
-  
-
-[env] 
-
-  APP_ENV = \"production\" 
-
-  
-
-[http_service] 
-
-  internal_port = 8001 
-
-  force_https = true 
-
-  auto_stop_machines = true 
-
-  auto_start_machines = true 
-
-  min_machines_running = 0 
-
-  
-
-[[vm]] 
-
-  memory = \"512mb\" 
-
-  cpu_kind = \"shared\" 
-
-  cpus = 1 
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
