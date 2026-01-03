@@ -1,4 +1,4 @@
-app = "easyfinder-web"
+app = "easyfinder-frontend"
 primary_region = "iad"
 
 [build]
