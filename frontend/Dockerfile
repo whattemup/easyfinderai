@@ -52,7 +52,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port - fly.io will route to this 
 
-EXPOSE 3000 
+EXPOSE 8080
 
   
 
