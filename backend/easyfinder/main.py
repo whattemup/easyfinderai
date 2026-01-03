@@ -6,6 +6,7 @@ import logging
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import List, Optional, Dict, Any
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, APIRouter, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,17 +22,30 @@ from easyfinder.logging import activity_logger
 
 
 # -------------------------------------------------
-# ENV & DATABASE
+# ENV
 # -------------------------------------------------
 
-ROOT_DIR = Path(__file__).resolve().parent
-load_dotenv(ROOT_DIR / ".env")
+# Safe for local dev + Docker + Fly.io
+load_dotenv()
 
 MONGO_URL = os.getenv("MONGO_URL")
 DB_NAME = os.getenv("DB_NAME", "easyfinder")
 
+if not MONGO_URL:
+    raise RuntimeError("❌ MONGO_URL is not set")
+
 client = AsyncIOMotorClient(MONGO_URL)
 db = client[DB_NAME]
+
+
+# -------------------------------------------------
+# LIFESPAN (modern FastAPI)
+# -------------------------------------------------
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+    client.close()
 
 
 # -------------------------------------------------
@@ -41,7 +55,8 @@ db = client[DB_NAME]
 app = FastAPI(
     title="EasyFinder AI",
     version="1.0.0",
-    description="Enterprise Lead Scoring & Outreach API"
+    description="Enterprise Lead Scoring & Outreach API",
+    lifespan=lifespan
 )
 
 api_router = APIRouter(prefix="/api")
@@ -235,19 +250,17 @@ async def sample_csv():
 
 
 # -------------------------------------------------
-# FINALIZE APP
+# CORS
 # -------------------------------------------------
 
-app.include_router(api_router)
+cors_origins = os.getenv("CORS_ORIGINS")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.getenv("CORS_ORIGINS", "*").split(","),
+    allow_origins=cors_origins.split(",") if cors_origins else [],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.on_event("shutdown")
-async def shutdown():
-    client.close()
+app.include_router(api_router)
