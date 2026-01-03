@@ -1,9 +1,6 @@
 app = "easyfinder-backend"
 primary_region = "iad"
 
-[build]
-  dockerfile = "app/backend/Dockerfile"
-
 [http_service]
   internal_port = 8080
   force_https = true
