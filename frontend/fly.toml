@@ -1,18 +1,10 @@
-# EasyFinder AI - fly.io Frontend Configuration 
+# EasyFinder AI - Frontend (Fly.io)
 
-  
+app = "easyfinder-web"
+primary_region = "iad"
 
-app = \"easyfinder-web\" 
-
-primary_region = \"iad\" 
-
-  
-
-[build] 
-
-  dockerfile = \"Dockerfile\" 
-
-  
+[build]
+  dockerfile = "Dockerfile"
 
 [[services]]
   internal_port = 8080
@@ -20,13 +12,18 @@ primary_region = \"iad\"
 
   [[services.ports]]
     port = 80
+    handlers = ["http"]
 
-  
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
 
-[[vm]] 
+  [services.concurrency]
+    type = "connections"
+    soft_limit = 500
+    hard_limit = 1000
 
-  memory = \"512mb\" 
-
-  cpu_kind = \"shared\" 
-
-  cpus = 1 
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
