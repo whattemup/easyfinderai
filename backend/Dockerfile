@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["python", "-c", "import easyfinder.main"]
+CMD ["uvicorn", "easyfinder.main:app", "--host", "0.0.0.0", "--port", "8080"]
