@@ -1,9 +1,7 @@
 fastapi
+uvicorn[standard]
 python-multipart
 pandas
 motor
 pydantic
 python-dotenv
-uvicorn[standard]
-python-dotenv
-
