@@ -7,9 +7,13 @@ primary_region = "iad"
 [[services]]
   internal_port = 8080
   protocol = "tcp"
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
 
   [[services.ports]]
     port = 80
+
 
 [[vm]]
   memory = "512mb"
