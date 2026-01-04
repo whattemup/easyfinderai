@@ -4,13 +4,9 @@ primary_region = "iad"
 [build]
   dockerfile = "Dockerfile"
 
-[[services]]
+[http_service]
   internal_port = 8080
-  protocol = "tcp"
-
-  [[services.ports]]
-    port = 80
-
+  force_https = true
 
 [[vm]]
   memory = "512mb"
